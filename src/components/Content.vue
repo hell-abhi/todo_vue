@@ -6,7 +6,7 @@
 				<li v-for="todo in todos" class="todo">
 					<div :class="{active: todo.completed }">
 					{{ todo.text }}
-					<button v-on:click="completeTodo(todo.id)">Completed</button>
+					<button v-on:click="completeTodo(todo)">Completed</button>
 					<button v-on:click="deleteTodo(todo.id)">Delete</button>
 					</div>
 				</li>
@@ -25,11 +25,8 @@ export default {
       })
       this.todos.splice(index, 1)
     },
-    completeTodo: function (id) {
-      var index = this.todos.findIndex(function (o) {
-        return o.id === id
-      })
-      this.todos[index].completed = true
+    completeTodo: function (todo) {
+      todo.completed = true
     }
   },
   data () {

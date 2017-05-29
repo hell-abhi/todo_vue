@@ -17,7 +17,7 @@ import Content from './Content'
 
 export default {
   methods: {
-    addTodo: function () { if (this.newTodo) this.todos.splice(0, 0, { id: this.todos.length, text: this.newTodo }); this.newTodo = undefined }
+    addTodo: function () { if (this.newTodo) this.todos.splice(0, 0, { id: this.todos.length, text: this.newTodo, completed: false }); this.newTodo = undefined }
   },
   data () {
     return {
