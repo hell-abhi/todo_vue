@@ -3,11 +3,11 @@
 		hello this is content file
 		<div>
 			<ul>
-				<li v-for="todo in todos" class="todo">
+				<li v-for="(todo,index)  in todos" class="todo">
 					<div :class="{active: todo.completed }">
 					{{ todo.text }}
 					<button v-on:click="completeTodo(todo)">Completed</button>
-					<button v-on:click="deleteTodo(todo.id)">Delete</button>
+					<button v-on:click="deleteTodo(index)">Delete</button>
 					</div>
 				</li>
 			</ul>
@@ -20,10 +20,7 @@ export default {
   props: ['todos'],
   methods: {
     deleteTodo: function (id) {
-      var index = this.todos.findIndex(function (o) {
-        return o.id === id
-      })
-      this.todos.splice(index, 1)
+      this.todos.splice(id, 1)
     },
     completeTodo: function (todo) {
       todo.completed = true
